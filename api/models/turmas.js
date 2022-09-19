@@ -4,7 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     data_inicio: DataTypes.DATEONLY
   }, {});
   Turmas.associate = function(models) {
-    // associations can be defined here
+    Turmas.hasMany(models.Matriculas, {
+      foreignKey: 'turmas_id'
+    })
+    //processo reverso de referencia de chaves estrangeiras
+    Turmas.belongsTo(models.Pessoas)  //Turmas pertence a tabela pessoas(chave estrangeira)
+    Turmas.belongsTo(models.Niveis)  //Turmas pertence a tabela Niveis(chave estrangeira)
   };
   return Turmas;
 };
