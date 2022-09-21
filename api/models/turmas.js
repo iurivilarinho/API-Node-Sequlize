@@ -5,15 +5,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Turmas.associate = function(models) {
     Turmas.hasMany(models.Matriculas, {
-      foreignKey: 'turmas_id'
+      foreignKey: 'turma_id'
     })
-    //processo reverso de referencia de chaves estrangeiras
     Turmas.belongsTo(models.Pessoas, {
       foreignKey: 'pessoa_id'
-    })  //Turmas pertence a tabela pessoas(chave estrangeira)
+    })
     Turmas.belongsTo(models.Niveis, {
       foreignKey: 'nivel_id'
-    })  //Turmas pertence a tabela Niveis(chave estrangeira)
+    })
   };
   return Turmas;
 };
