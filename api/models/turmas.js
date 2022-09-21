@@ -8,8 +8,12 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'turmas_id'
     })
     //processo reverso de referencia de chaves estrangeiras
-    Turmas.belongsTo(models.Pessoas)  //Turmas pertence a tabela pessoas(chave estrangeira)
-    Turmas.belongsTo(models.Niveis)  //Turmas pertence a tabela Niveis(chave estrangeira)
+    Turmas.belongsTo(models.Pessoas, {
+      foreignKey: 'pessoa_id'
+    })  //Turmas pertence a tabela pessoas(chave estrangeira)
+    Turmas.belongsTo(models.Niveis, {
+      foreignKey: 'nivel_id'
+    })  //Turmas pertence a tabela Niveis(chave estrangeira)
   };
   return Turmas;
 };
